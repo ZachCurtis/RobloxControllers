@@ -1,0 +1,7 @@
+# Project place file
+/Controllers.rbxlx
+
+# Roblox Studio lock files
+/*.rbxlx.lock
+/*.rbxl.lock
+src/PIDFamily/P.lua
