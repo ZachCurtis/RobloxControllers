@@ -14,7 +14,7 @@ P.__index = P
 ---@param kP number @proportional gain
 ---@param sP number @setpoint variable
 ---@return PController
-function P.new(kP, sP)
+function P.new(kP: number, sP: number)
     
     local self = setmetatable({}, P)
 
@@ -25,7 +25,7 @@ function P.new(kP, sP)
 end
 
 ---@param sP number @setpoint variable 
-function P:UpdateSetpoint(sP)
+function P:UpdateSetpoint(sP: number)
     self.Setpoint = sP
 end
 
@@ -33,7 +33,7 @@ end
 ---@param pV number @process variable 
 ---@param injectedError number @optional externally injected error to use instead of calculating error from stored SetPoint
 ---@return number @sensor feedback value
-function P:Step(pV, injectedError)
+function P:Step(pV: number, injectedError: number)
     local err = injectedError and injectedError or self.Setpoint - pV
 
     return err * self.ProportionalGain

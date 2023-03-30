@@ -1,10 +1,10 @@
 --!strict
 
 --[[
-    Copyright (c) 2021, Zach Curtis
+    Copyright (c) 2023, Zach Curtis
     Proportional Intergral Derivative Controller
 
-    See: https://www.csimn.com/CSI_pages/PIDforDummies.html
+    See: https://csimn.com/CSI_pages/PID.html
 ]]
 
 local PID = {}
@@ -15,7 +15,7 @@ PID.__index = PID
 ---@param kD number derivative gain - counters oscillation
 ---@param iMax number maximum intergral value 
 ---@param sP number setpoint variable 
-function PID.new(kP, kI, kD, iMax, sP)
+function PID.new(kP: number, kI: number, kD: number, iMax: number, sP: number)
     local self = setmetatable({}, PID)
 
     self.ProportionalGain = kP
@@ -33,14 +33,14 @@ function PID.new(kP, kI, kD, iMax, sP)
 end
 
 ---@param sP number setpoint variable 
-function PID:UpdateSetpoint(sP)
+function PID:UpdateSetpoint(sP: number)
     self.Setpoint = sP
 end
 
 -- call in a loop
 ---@param pV number process variable
 ---@param dt number delta time (duration between last call to Step and this call to Step)
-function PID:Step(pV, dt, returnAlpha)
+function PID:Step(pV: number, dt: number, returnAlpha: number)
     
     local err = self.Setpoint - pV
 

@@ -14,7 +14,7 @@ PI.__index = PI
 ---@param kI number intergral gain
 ---@param iMax number maximum intergral value
 ---@param sP number setpoint variable 
-function PI.new(kP, kI, iMax, sP)
+function PI.new(kP: number, kI: number, iMax: number, sP: number)
     local self = setmetatable({}, PI)
 
     self.ProportionalGain = kP
@@ -30,14 +30,14 @@ function PI.new(kP, kI, iMax, sP)
 end
 
 ---@param sP number setpoint variable 
-function PI:UpdateSetpoint(sP)
+function PI:UpdateSetpoint(sP: number)
     self.Setpoint = sP
 end
 
 -- call in a loop
 ---@param pV number process variable
 ---@param dt number delta time (duration between last call to Step and this call to Step)
-function PI:Step(pV, dt)
+function PI:Step(pV: number, dt: number)
     local err = self.Setpoint - pV
     
     self.IntergralTerm += err * dt
